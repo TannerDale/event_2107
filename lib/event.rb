@@ -54,13 +54,17 @@ class Event
   def sell(item, amount)
     trucks = food_trucks_that_sell(item)
     if trucks.size > 0 && total_inventory[item][:quantity] >= amount
-      trucks.each do |truck|
-        total_sold = truck.check_stock(item)
-        truck.sell(item, amount)
-        amount -= total_sold
-      end
+      sell_items(trucks, item, amount)
       return true
     end
     false
+  end
+
+  def sell_items(trucks, item, amount)
+    trucks.each do |truck|
+      total_sold = truck.check_stock(item)
+      truck.sell(item, amount)
+      amount -= total_sold
+    end
   end
 end
