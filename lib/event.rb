@@ -1,9 +1,10 @@
 class Event
-  attr_reader :name, :food_trucks
+  attr_reader :name, :food_trucks, :date
 
-  def initialize(name)
+  def initialize(name, date = Date.today)
     @name = name
     @food_trucks = []
+    @date = format_date(date)
   end
 
   def add_food_truck(truck)
@@ -66,5 +67,11 @@ class Event
       truck.sell(item, amount)
       amount -= total_sold
     end
+  end
+
+  def format_date(date)
+    day = date.day.to_s.rjust(2, "0")
+    month = date.month.to_s.rjust(2, "0")
+    "#{day}/#{month}/#{date.year}"
   end
 end
