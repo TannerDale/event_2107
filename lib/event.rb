@@ -26,7 +26,7 @@ class Event
     all_items.map do |item|
       trucks = food_trucks_that_sell(item)
       amount = trucks.sum do |truck|
-        truck.inventory[item]
+        truck.check_stock(item)
       end
       inner_hash = { quantity: amount, food_trucks: trucks}
       [item, inner_hash]
@@ -48,6 +48,6 @@ class Event
   def sorted_item_list
     all_items.map do |item|
       item.name
-    end.uniq.sort
+    end.sort
   end
 end
