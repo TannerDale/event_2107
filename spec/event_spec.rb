@@ -77,6 +77,10 @@ RSpec.describe Event do
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
 
+    it 'has all items' do
+      expect(event.all_items).to eq([item1, item2, item4, item3])
+    end
+
     it 'has a total inventory' do
       expected = {
         item1 => {
