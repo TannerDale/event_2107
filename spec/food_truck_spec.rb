@@ -21,7 +21,6 @@ RSpec.describe FoodTruck do
     item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
 
     it 'can stock and check stock' do
-      expect(food_truck.check_stock(item1)).to eq(0)
 
       food_truck.stock(item1, 30)
 
@@ -39,7 +38,18 @@ RSpec.describe FoodTruck do
     end
 
     it 'can check if it can sell' do
+
+      food_truck.stock(item1, 30)
+
+      food_truck.stock(item1, 25)
+
+      food_truck.stock(item2, 12)
+
       expect(food_truck.can_sell?(item1)).to be(true)
+    end
+
+    it 'can calculate potential revenue' do
+      expect(food_truck.potential_revenue).to eq(206.25)
     end
   end
 end
