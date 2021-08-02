@@ -50,4 +50,20 @@ class Event
       item.name
     end.sort
   end
+
+  def sell(item, amount)
+    trucks = food_trucks_that_sell(item)
+    if trucks.size > 0 && total_inventory[item][:quantity] >= amount
+      while amount > 0
+        trucks.each do |truck|
+          total_sold = truck.check_stock(item)
+          truck.sell(item, amount)
+          amount -= total_sold
+        end
+      end
+      true
+    else
+      false
+    end
+  end
 end
