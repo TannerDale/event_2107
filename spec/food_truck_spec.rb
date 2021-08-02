@@ -37,6 +37,10 @@ RSpec.describe FoodTruck do
       expect(food_truck.inventory).to eq(item1 => 55, item2 => 12)
     end
 
+    it 'can check its items' do
+      expect(food_truck.items).to eq([item1, item2])
+    end
+
     it 'can check if it can sell' do
       expect(food_truck.can_sell?(item1)).to be(true)
     end
