@@ -1,6 +1,7 @@
 require "./lib/item"
 require "./lib/food_truck"
 require "./lib/event"
+require 'date'
 
 RSpec.describe Event do
   context 'initialize' do
@@ -120,7 +121,7 @@ RSpec.describe Event do
     item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
     item5 = Item.new({name: 'Onion Pie', price: '$25.00'})
     event = Event.new("South Pearl Street Farmers Market")
-    # event.date
+
     food_truck1 = FoodTruck.new("Rocky Mountain Pies")
     food_truck1.stock(item1, 35)
     food_truck1.stock(item2, 7)
@@ -147,6 +148,12 @@ RSpec.describe Event do
       expect(food_truck1.check_stock(item1)).to eq(0)
 
       expect(food_truck3.check_stock(item1)).to eq(60)
+    end
+
+    it 'has a date' do
+      allow(event).to receive(:date).and_return('02/08/2021')
+
+      expect(event.date).to eq('02/08/2021')
     end
   end
 end
