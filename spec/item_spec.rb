@@ -12,5 +12,9 @@ RSpec.describe Item do
       expect(item.name).to eq('Apple Pie (Slice)')
       expect(item.price).to eq(2.50)
     end
+
+    it 'can format a price' do
+      expect(item.make_price("$2.34")).to eq(2.34)
+    end
   end
 end
