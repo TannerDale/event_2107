@@ -30,6 +30,7 @@ class Event
         truck.check_stock(item)
       end
       inner_hash = { quantity: amount, food_trucks: trucks}
+
       [item, inner_hash]
     end.to_h
   end
@@ -72,6 +73,7 @@ class Event
   def format_date(date)
     day = date.day.to_s.rjust(2, "0")
     month = date.month.to_s.rjust(2, "0")
+
     "#{day}/#{month}/#{date.year}"
   end
 end
