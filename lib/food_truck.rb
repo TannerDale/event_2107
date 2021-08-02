@@ -15,6 +15,12 @@ class FoodTruck
   end
 
   def can_sell?(item)
-    @inventory.has_key?(item) && inventory[item] > 0
+    inventory[item] > 0
+  end
+
+  def potential_revenue
+    @inventory.sum do |item, amount|
+      amount * item.price
+    end
   end
 end
