@@ -59,9 +59,8 @@ class Event
         truck.sell(item, amount)
         amount -= total_sold
       end
-      true
-    else
-      false
+      return true
     end
+    false
   end
 end
