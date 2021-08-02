@@ -27,4 +27,9 @@ class FoodTruck
   def items
     @inventory.keys
   end
+
+  def sell(item, amount)
+    @inventory[item] -= amount
+    @inventory[item] = 0 if @inventory[item] <= 0
+  end
 end
