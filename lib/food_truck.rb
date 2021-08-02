@@ -13,4 +13,8 @@ class FoodTruck
   def check_stock(item)
     @inventory[item]
   end
+
+  def can_sell?(item)
+    @inventory.has_key?(item) && inventory[item] > 0
+  end
 end
